@@ -14,7 +14,7 @@ namespace Projekt
     {
 
         private static volatile bool _stop = false;
-        private static volatile bool _add = false;
+        private static volatile bool _add = true;
 
         public static void StopThread()
         {
@@ -31,27 +31,6 @@ namespace Projekt
 
             List<Przypomnienie> plist = new List<Przypomnienie>();
             string str;
-
-            using (StreamReader sr = new StreamReader(path))
-            {         
-                while ((str = sr.ReadLine()) != null)
-                {
-
-                    Przypomnienie prz = null;
-
-                    DateTime dt;
-                    if (DateTime.TryParse(str.Split('#')[2], out dt))
-                    {
-                        string imp = str.Split('#')[0];
-                        string desc = str.Split('#')[1];
-                        prz = new Przypomnienie(imp, desc, dt);
-
-                        if (!plist.Contains(prz))
-                            plist.Add(prz);
-                    }
-                }
-            }
-
 
             while (true)
             {

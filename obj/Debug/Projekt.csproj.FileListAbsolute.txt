@@ -1,0 +1,6 @@
+C:\Users\Rafał\OneDrive\Projekty\Visualc#\Projekt\bin\Debug\Projekt.exe.config
+C:\Users\Rafał\OneDrive\Projekty\Visualc#\Projekt\bin\Debug\Projekt.exe
+C:\Users\Rafał\OneDrive\Projekty\Visualc#\Projekt\bin\Debug\Projekt.pdb
+C:\Users\Rafał\OneDrive\Projekty\Visualc#\Projekt\obj\Debug\Projekt.csprojResolveAssemblyReference.cache
+C:\Users\Rafał\OneDrive\Projekty\Visualc#\Projekt\obj\Debug\Projekt.exe
+C:\Users\Rafał\OneDrive\Projekty\Visualc#\Projekt\obj\Debug\Projekt.pdb

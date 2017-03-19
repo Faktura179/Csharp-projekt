@@ -14,10 +14,16 @@ namespace Projekt
     {
 
         private static volatile bool _stop = false;
+        private static volatile bool _add = false;
 
         public static void StopThread()
         {
             _stop = true;
+        }
+
+        public static void DodajPrzypomnienie()
+        {
+            _add = true;
         }
 
         public static void Przypomnienia(string path)
@@ -26,26 +32,52 @@ namespace Projekt
             List<Przypomnienie> plist = new List<Przypomnienie>();
             string str;
 
+            using (StreamReader sr = new StreamReader(path))
+            {         
+                while ((str = sr.ReadLine()) != null)
+                {
+
+                    Przypomnienie prz = null;
+
+                    DateTime dt;
+                    if (DateTime.TryParse(str.Split('#')[2], out dt))
+                    {
+                        string imp = str.Split('#')[0];
+                        string desc = str.Split('#')[1];
+                        prz = new Przypomnienie(imp, desc, dt);
+
+                        if (!plist.Contains(prz))
+                            plist.Add(prz);
+                    }
+                }
+            }
+
+
             while (true)
             {
-                using (StreamReader sr = new StreamReader(path))
+                if (_add)
                 {
-                    while ((str = sr.ReadLine()) != null)
+                    using (StreamReader sr = new StreamReader(path))
                     {
-
-                        Przypomnienie prz = null;
-
-                        DateTime dt;
-                        if (DateTime.TryParse(str.Split('#')[2], out dt))
+                        while ((str = sr.ReadLine()) != null)
                         {
-                            string imp = str.Split('#')[0];
-                            string desc = str.Split('#')[1];
-                            prz = new Przypomnienie(imp, desc, dt);
 
-                            if (!plist.Contains(prz))
-                                plist.Add(prz);
+                            Przypomnienie prz = null;
+
+                            DateTime dt;
+                            if (DateTime.TryParse(str.Split('#')[2], out dt))
+                            {
+                                string imp = str.Split('#')[0];
+                                string desc = str.Split('#')[1];
+                                prz = new Przypomnienie(imp, desc, dt);
+
+                                if (!plist.Contains(prz))
+                                    plist.Add(prz);
+                            }
                         }
                     }
+
+                    _add = false;
                 }
 
                 Thread.Sleep(2000);

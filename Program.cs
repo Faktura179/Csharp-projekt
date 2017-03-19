@@ -51,6 +51,7 @@ namespace Projekt
                         break;
                     case 2:
                         Tools.DodajPrzypomnienie(path);
+                        NotificationThread.DodajPrzypomnienie();
                         break;
                     case 3:
                         Tools.PokazWydarzenia(path);

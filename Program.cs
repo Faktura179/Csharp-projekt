@@ -15,9 +15,11 @@ namespace Projekt
             Console.WriteLine("Witaj w programie notatki!");
             string path = @"D:\Zdarzenia.txt";
 
-            Thread notify = new Thread(() => NotificationThread.Przypomnienia(path));
+            Thread notify = new Thread(() => NotificationThread.Przypomnienie(path));
+            Thread iconThread = new Thread(()=>TrayIconThread.Ikonka());
 
             notify.Start();
+            iconThread.Start();
 
             try
             {
@@ -67,8 +69,10 @@ namespace Projekt
                 Console.Clear();              
             }
 
+            TrayIconThread.StopThread();
             NotificationThread.StopThread();
             notify.Join();
+            iconThread.Join();
         }
     }
 }

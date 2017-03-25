@@ -16,6 +16,7 @@ namespace Projekt
         private static volatile bool _stop = false;
         private static volatile bool _add = true;
 
+
         public static void StopThread()
         {
             _stop = true;
@@ -26,7 +27,7 @@ namespace Projekt
             _add = true;
         }
 
-        public static void Przypomnienia(string path)
+        public static void Przypomnienie(string path)
         {
 
             List<Przypomnienie> plist = new List<Przypomnienie>();
